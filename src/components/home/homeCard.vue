@@ -33,8 +33,9 @@
           <van-icon name="arrow" class="arrow" size="11px" color="#ccc" />
         </div>
       </div>
-      <div class="feedback-wrapper" @click="onFeedbackClick"><p>反馈</p></div>
-
+      <div class="feedback-wrapper" @click="onFeedbackClick">
+        <p>反馈</p>
+      </div>
     </div>
   </div>
 </template>
@@ -57,7 +58,7 @@ export default {
     gotoShelf() {},
     onBookClick() {},
     sign() {},
-    onFeedbackClick(){},
+    onFeedbackClick() {}
   },
   components: {
     ImageView
@@ -72,7 +73,7 @@ export default {
   margin: 22px 20px 0;
   .home-card-inner {
     position: relative;
-    padding: 21.5px 17px 20px 20px;
+    padding: 21.5px 15px 20px 20px;
     box-sizing: border-box;
     .userinfo {
       display: flex;
@@ -107,7 +108,8 @@ export default {
       .book-wrapper {
         display: flex;
         flex: 1;
-        justify-content: space-around;
+        justify-content: space-between;
+        padding-right: 20px;
         .book-image-wrapper {
           width: 72px;
           height: 101px;
@@ -122,13 +124,14 @@ export default {
           word-break: break-word;
           color: #fff;
           opacity: 0.8;
+          margin-right: 6px;
         }
       }
     }
     .feedback-wrapper {
       position: absolute;
-      right:0;
-      top:21.5px;
+      right: 0;
+      top: 21.5px;
       width: 44.5px;
       height: 23.5px;
       line-height: 23.5px;
@@ -138,9 +141,8 @@ export default {
       font-size: 11px;
       color: #fff;
       text-align: center;
-      p{
+      p {
         opacity: 1;
-        
       }
     }
   }
