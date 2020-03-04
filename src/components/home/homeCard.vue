@@ -37,11 +37,13 @@
         <p>反馈</p>
       </div>
     </div>
+    <van-dialog id="van-dialog"/>
   </div>
 </template>
 
 <script>
 import ImageView from "./../base/ImageView";
+import Dialog from "vant-weapp/dist/dialog/dialog";
 export default {
   props: {
     data: Object,
@@ -58,7 +60,20 @@ export default {
     gotoShelf() {},
     onBookClick() {},
     sign() {},
-    onFeedbackClick() {}
+    onFeedbackClick() {
+      Dialog.confirm({
+        title: "反馈",
+        message: "您是否提交反馈信息",
+        confirmButtonText: "是",
+        cancelButtonText: "否"
+      })
+        .then(() => {
+          console.log("点击是之后的事件");
+        })
+        .catch(() => {
+          console.log("点击否之后的事件");
+        });
+    }
   },
   components: {
     ImageView
