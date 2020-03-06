@@ -1,6 +1,6 @@
 <template>
   <div class="home-banner" @click="onClick" v-if="img">
-    <div class="bg-img" :style="{backgroundImage:'url('+img+')'}">
+    <div class="bg-img" :style="{backgroundImage:url}">
       <div class="title">{{title}}</div>
       <div class="subtitle-wrapper">
         <div class="sub-Title">{{subtitle}}</div>
@@ -23,6 +23,11 @@ export default {
     img: {
       type: String,
       default: ""
+    }
+  },
+  computed: {
+    url() {
+      return "url(" + this.img + ")";
     }
   },
   methods: {
@@ -51,7 +56,7 @@ export default {
       font-size: 18px;
     }
     .subtitle-wrapper {
-        padding: 0 34%;
+      padding: 0 34%;
       .sub-Title {
         transform: translateY(45px);
         text-align: center;
