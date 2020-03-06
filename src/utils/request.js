@@ -15,8 +15,11 @@ export function get (url, params = {}) {
       fly
         .get(url, params)
         .then(res => {
-          console.log(res)
-          resolve(res)
+          if (res && res.data && res.data.error_code === 0) {
+            resolve(res)
+          } else {
+            reject(res)
+          }
         })
         .catch(err => {
           handleError(err)
