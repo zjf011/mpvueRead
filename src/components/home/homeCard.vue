@@ -51,10 +51,10 @@ export default {
   },
   computed: {
     avatar() {
-      if (this.data && this.data.userInfo) return this.data.userInfo.avatar;
+      return (this.data && this.data.userInfo && this.data.userInfo.avatar) || '';
     },
     nickname() {
-      return this.data && this.data.userInfo && this.data.userInfo.nickname;
+      return (this.data && this.data.userInfo && this.data.userInfo.nickname) || '';
     },
     bookList() {
       return (this.data && this.data.bookList) || [];

@@ -47,7 +47,14 @@ export default {
     }
   },
   watch: {
-    src(newvalue, prevalue) {}
+    src(newvalue, prevalue) {
+      if (newvalue && newvalue.length > 0 && newvalue !== prevalue) {
+        this.$nextTick(() => {
+          this.isLoading = true;
+          this.error = false;
+        });
+      }
+    }
   },
   data() {
     return {
@@ -61,7 +68,7 @@ export default {
     },
     onLoad() {
       this.isLoading = false;
-      console.log("Image onLoad");
+      // console.log("Image onLoad");
     },
     onError() {
       console.log("image faild load");
@@ -73,13 +80,13 @@ export default {
 </script>
 
 <style lang='scss'>
-.image-view{
-    width:100%;
-    img{
-        width: 100%;
-        &.round{
-            border-radius: 50%;
-        }
+.image-view {
+  width: 100%;
+  img {
+    width: 100%;
+    &.round {
+      border-radius: 50%;
     }
+  }
 }
 </style>

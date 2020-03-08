@@ -18,6 +18,11 @@ export function get (url, params = {}) {
           if (res && res.data && res.data.error_code === 0) {
             resolve(res)
           } else {
+            const msg = (res && res.data && res.data.msg) || '请求失败'
+            mpvue.showToast({
+              title: msg,
+              duration: 2000
+            })
             reject(res)
           }
         })
@@ -35,8 +40,16 @@ export function post (url, params = {}) {
       fly
         .post(url, params)
         .then(res => {
-          console.log(res)
-          resolve(res)
+          if (res && res.data && res.data.error_code === 0) {
+            resolve(res)
+          } else {
+            const msg = (res && res.data && res.data.msg) || '请求失败'
+            mpvue.showToast({
+              title: msg,
+              duration: 2000
+            })
+            reject(res)
+          }
         })
         .catch(err => {
           handleError(err)
